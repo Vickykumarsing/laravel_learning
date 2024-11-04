@@ -6,8 +6,9 @@ use App\Http\Controllers\singleAction;
 use App\Http\Controllers\formValidation;
 use App\Http\Controllers\component;
 //use App\Models\Cust;
-use App\Http\Controllers\custcontroller;
+//use App\Http\Controllers\custcontroller;
 use App\Http\Controllers\urlmanager;
+//use App\Http\Controllers\addlist;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,5 +66,20 @@ Route::get('/cust',[custcontroller::class,'index']);
 Route::post('/cust',[custcontroller::class,'cust']);
 Route::get('/cust/view',[custcontroller::class,'view']);
 
+Route::get('/',function()
+{
+   return view('homeurl');
+});
+Route::get('/customer/create',[urlmanager::class, 'index']);
+//Route::get('/registration',[urlmanager::class, 'index']);
+//Route::post('/registration',[urlmanager::class,'registration']);
+Route::get('/customer',[urlmanager::class,'view']);
+Route::post('/customer/store',[urlmanager::class,'store']);
 
-Route::get('',[urlmanager::class, 'index']);
+Route::get('/customer/delete/{id}',[urlmanager::class,'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}',[urlmanager::class,'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}',[urlmanager::class,'update'])->name('customer.update');
+
+
+
+
